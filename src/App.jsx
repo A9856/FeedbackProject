@@ -5,7 +5,7 @@ import './assests/css/main.css'
 
 export default function App() {
     return (
-        <BrowserRouter basename='/InternFeedbck/'>
+        <BrowserRouter basename='/InternFeedbck'>
         
             <Routes>
                 <Route path='' element={<FormPage/>} />
