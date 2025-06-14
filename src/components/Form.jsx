@@ -9,62 +9,31 @@ export default function Form() {
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   const errors = validateForm(formData);
-  //   if (Object.keys(errors).length > 0) {
-  //     setFormErrors(errors);
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch("http://localhost:7000/feed", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(formData),
-  //     });
-
-  //     const savedData = await response.json();
-  //     setSubmittedData([...submittedData, savedData]);
-
-  //     // Clear form fields
-  //     setFormData({ name: "", email: "", phone: "", feedback: "" });
-  //     setFormErrors({});
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //   }
-  // }
   async function handleSubmit(e) {
-  e.preventDefault();
-  const errors = validateForm(formData);
-  if (Object.keys(errors).length > 0) {
-    setFormErrors(errors);
-    return;
-  }
-
-  try {
-    const API_URL = process.env.REACT_APP_BACKEND_SERVER;
-
-    const response = await fetch(`${API_URL}/feed`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    e.preventDefault();
+    const errors = validateForm(formData);
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
     }
 
-    const savedData = await response.json();
-    setSubmittedData([...submittedData, savedData]);
+    try {
+      const response = await fetch("http://localhost:7000/feed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    // Clear form fields
-    setFormData({ name: "", email: "", phone: "", feedback: "" });
-    setFormErrors({});
-  } catch (error) {
-    console.error("Error submitting form:", error);
+      const savedData = await response.json();
+      setSubmittedData([...submittedData, savedData]);
+
+      // Clear form fields
+      setFormData({ name: "", email: "", phone: "", feedback: "" });
+      setFormErrors({});
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   }
-}
 
   return (
     <div className="form-container">
