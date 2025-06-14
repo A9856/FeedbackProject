@@ -9,8 +9,6 @@ export default function Form() {
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
-
-  const API_URL=process.env.REACT_APP_BACKEND_SERVER;
   async function handleSubmit(e) {
     e.preventDefault();
     const errors = validateForm(formData);
@@ -20,8 +18,7 @@ export default function Form() {
     }
 
     try {
-      // const response = await fetch("http://localhost:7000/feed", {
-         const response = await fetch(`${API_URL}/api/feed`, {
+      const response = await fetch("http://localhost:7000/feed", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
