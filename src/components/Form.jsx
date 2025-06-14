@@ -18,7 +18,7 @@ export default function Form() {
     }
 
     try {
-      const response = await fetch("http://localhost:7000/feed", {
+      const response = await fetch("http://localhost:5000/feed", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
