@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/InternFeedbck/static/css/main.601b2e73.css",
+    "main.js": "/InternFeedbck/static/js/main.06639ea0.js",
+    "index.html": "/InternFeedbck/index.html",
+    "main.601b2e73.css.map": "/InternFeedbck/static/css/main.601b2e73.css.map",
+    "main.06639ea0.js.map": "/InternFeedbck/static/js/main.06639ea0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.601b2e73.css",
+    "static/js/main.06639ea0.js"
+  ]
+}
